@@ -26,16 +26,13 @@ public class EntrenadorServices {
 	public Map<String, String> postEntrenador(String email) {
 		
 		Entrenador entrenadorRet = entrenadorRepository.findByEmail(email);
-		
 		Map<String, String> entrenador = new HashMap<>();
-		List<Entrenador> entrenadores = entrenadorRepository.findAll();
-		for (Entrenador e : entrenadores) {
-			if (e.getEmail().equals(email)) {
-				entrenador.put("uuid", email);
-				return entrenador;
-			}
+		
+		if(entrenadorRet != null) {
+			 entrenador.put("uuid", entrenadorRet.getEmail());
+		}else {
+			entrenador.put("Error", "No hay entrenador con ese email");
 		}
-		entrenador.put("Error", "No hay entrenador con ese email");
 		return entrenador;
 	}
 	

@@ -2,6 +2,7 @@ package com.example.demo.services;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -26,14 +27,13 @@ public class PokemonServices {
 		return pokemonRepository.findAll();
 	}
 
-	public Pokemon getPokemon(Integer tipo) {
-		List<Pokemon> pokemones = pokemonRepository.findAll();
-		for (Pokemon p : pokemones) {
-			if (p.getTipoPokemon() == tipo) {
-				return p;
-			}
+	public List<PokemonDTO> getPokemon(Integer tipoPokemon) {
+		List<PokemonDTO> ans = new ArrayList<PokemonDTO>();
+		List<Pokemon> query = pokemonRepository.findByTipoPokemon(tipoPokemon);
+		for(Pokemon x: query) {
+			ans.add(convertToDto(x));
 		}
-		return null;
+		return ans;
 	}
 
 	public Pokemon savePokemon(PokemonDTO pokemonDTO) {
@@ -49,6 +49,17 @@ public class PokemonServices {
         // Guardar en la base de datos
         pokemonRepository.save(pokemon);
         return pokemon;
+    }
+	
+	private PokemonDTO convertToDto(Pokemon pokemon) {
+        PokemonDTO dto = new PokemonDTO();
+        dto.setNombre(pokemon.getNombre());
+        dto.setDescripcion(pokemon.getDescripcion());
+        dto.setTipoPokemon(pokemon.getTipoPokemon());
+        dto.setFechaDescubrimiento(pokemon.getFechaDescubrimiento());
+        dto.setGeneracion(pokemon.getGeneracion());
+        dto.setUuid(pokemon.getUuid());
+        return dto;
     }
 
 }
