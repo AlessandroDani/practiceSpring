@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.entities.Entrenador;
@@ -19,7 +20,7 @@ import com.example.demo.repositories.PokemonRepository;
 import com.example.demo.services.EntrenadorServices;
 import com.example.demo.services.PokemonServices;
 
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
+
 import org.springframework.web.bind.annotation.RequestParam;
 
 

@@ -24,6 +24,9 @@ public class EntrenadorServices {
 	PokemonRepository pokemonRepository;
 
 	public Map<String, String> postEntrenador(String email) {
+		
+		Entrenador entrenadorRet = entrenadorRepository.findByEmail(email);
+		
 		Map<String, String> entrenador = new HashMap<>();
 		List<Entrenador> entrenadores = entrenadorRepository.findAll();
 		for (Entrenador e : entrenadores) {

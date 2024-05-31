@@ -1,6 +1,7 @@
 package com.example.demo.entities;
 
-import java.sql.Date;
+import java.io.Serializable;
+import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -15,29 +16,28 @@ import lombok.Data;
 @Table(name = "pokemon")
 @Entity
 @Data
-public class Pokemon {
+public class Pokemon implements Serializable{
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;  // You can choose a different data type if needed
 	
-	@Column()
+	@Column
 	String nombre;
 	
-	@Column()
+	@Column
 	String descripcion;
 	
-	@Column()
-	Integer tipo_pokemon;
+	@Column(name="tipo_pokemon")
+	Integer tipoPokemon;
 	
-	@Column()
-	@JsonFormat(shape = JsonFormat.Shape.NUMBER)
-	Date fecha_descubrimiento;
+	@Column(name="fecha_descubrimiento")
+	Date fechaDescubrimiento;
 	
-	@Column()
+	@Column
 	Integer generacion;
 	
-	@Column()
+	@Column
 	String uuid;
 	
 

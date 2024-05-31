@@ -29,7 +29,7 @@ public class PokemonServices {
 	public Pokemon getPokemon(Integer tipo) {
 		List<Pokemon> pokemones = pokemonRepository.findAll();
 		for (Pokemon p : pokemones) {
-			if (p.getTipo_pokemon() == tipo) {
+			if (p.getTipoPokemon() == tipo) {
 				return p;
 			}
 		}
@@ -41,8 +41,8 @@ public class PokemonServices {
         Pokemon pokemon = new Pokemon();
         pokemon.setNombre(pokemonDTO.getNombre());
         pokemon.setDescripcion(pokemonDTO.getDescripcion());
-        pokemon.setTipo_pokemon(pokemonDTO.getTipo_pokemon());
-        pokemon.setFecha_descubrimiento((java.sql.Date) pokemonDTO.getFecha_descubrimiento());
+        pokemon.setTipoPokemon(pokemonDTO.getTipoPokemon());
+        pokemon.setFechaDescubrimiento(pokemonDTO.getFechaDescubrimiento());
         pokemon.setGeneracion(pokemonDTO.getGeneracion());
         pokemon.setUuid(pokemonDTO.getUuid());
 

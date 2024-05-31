@@ -11,16 +11,15 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-
 public class PokemonDTO {
 
 	String nombre;
 
 	String descripcion;
 	
-	Integer tipo_pokemon;
+	Integer tipoPokemon;
 	
-	Date fecha_descubrimiento;
+	Date fechaDescubrimiento;
 
 	Integer generacion;
 	
